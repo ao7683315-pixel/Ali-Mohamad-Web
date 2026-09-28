@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Syne', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-navy-deep: #070B16;
+  --color-navy-base: #0B132B;
+  --color-navy-surface: #101B3B;
+  --color-navy-card: #15234A;
+  --color-navy-border: #1E3166;
+  
+  --color-beige-pure: #F5F2EB;
+  --color-beige-soft: #EAE3D2;
+  --color-beige-muted: #C7C1B4;
+  --color-beige-dim: #8E8A80;
+
+  --color-orange-electric: #FF6B35;
+  --color-orange-hot: #FF5722;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--color-navy-base);
+    color: var(--color-beige-pure);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+  }
+}
+
+/* Glassmorphism and hardware accelerated surface utilities */
+.glass-panel {
+  background: rgba(16, 27, 59, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(245, 242, 235, 0.08);
+}
+
+.glass-panel-hover {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, border-color, box-shadow;
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(255, 107, 53, 0.35);
+  box-shadow: 0 12px 36px -10px rgba(0, 0, 0, 0.5), 0 0 24px -4px rgba(255, 107, 53, 0.12);
+}
+
+.gpu-accelerated {
+  transform: translate3d(0, 0, 0);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
